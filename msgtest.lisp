@@ -9,7 +9,7 @@
   (format t "Starting..~%")
   (setf nats:*debug* t)
   (defvar conn (nats:make-connection))
-  (defvar sid (nats:subscribe conn "events" (lambda (msg) (format t "Received: ~S~%" msg))))
+  (defvar sid (nats:subscribe conn "events" (lambda (msg) (format t "Received: ~A~%" msg))))
 
   (loop
     (format t "Sending message ~%")

@@ -2,6 +2,18 @@
 
 This is to help debug the intermittent error with [cl-nats](https://github.com/tormaroe/cl-nats).
 
+## Final Update
+
+It looks like the bug was caused by attempting to subscribe and publish before the NATS connection was fully established.
+
+The fix seems to be:
+
+````
+(defvar conn (nats:make-connection))
+(nats:wait-for-connection conn)
+<do stuff here>
+````
+
 ## Environment
 
 * Ubuntu 16.04 x64
